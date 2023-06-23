@@ -12,11 +12,10 @@ header{
     justify-content: center;
     align-items: center;
     color: whitesmoke;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 .players{
     height: 35vh;
-    margin-bottom: 10vh;
 }
 main, .players{
     display: flex;
@@ -46,4 +45,39 @@ main, .players{
 .health-bar{
     height: 100%;
     background-color: green;
+}
+
+.buttons{
+    display: flex;
+    width: 25vw;
+    padding: 1vw;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    width: 8vw;
+    border-radius: 5px;
+    background-color: brown;
+    color:whitesmoke;
+
+}  
+
+.game-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+    width: 30vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 1px gray;
+}
+
+#restart-button{
+    display: none;
+
 }
