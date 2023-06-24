@@ -6,9 +6,6 @@ window.onload = () => {
     let attackCount = 0;
     let specialAttackCount = 0;
 
-    let healButton = document.getElementById('heal')
-    let specialButton = document.getElementById('special')
-
 /*** Functions */
 
     //Attack function: Decrease both the player and the monster health, randomly,
@@ -20,11 +17,13 @@ window.onload = () => {
     
     if (attacker === "player") {
         monsterHealth -= damage;
+        if(monsterHealth < 0) monsterHealth = 0;
     } else {
         playerHealth -= damage;
-    
+        if(playerHealth < 0) playerHealth = 0;
     }
 
+    // console.log(`Attacker: ${attacker}, damage: ${damage}, player: ${playerHealth}, monster: ${monsterHealth}`)
     updateHealthBar();
     }
 
