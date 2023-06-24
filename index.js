@@ -18,9 +18,11 @@ window.onload = () => {
     if (attacker === "player") {
         monsterHealth -= damage;
         if(monsterHealth < 0) monsterHealth = 0;
+        addLog(`<span style="color: purple;">Player</span> attacks monster and deals <span style="color: red;">${damage}</span>`);
     } else {
         playerHealth -= damage;
         if(playerHealth < 0) playerHealth = 0;
+        addLog(`<span style="color: orange;">Monster</span> attacks player and deals <span style="color: red;">${damage}</span>`);
     }
 
     // console.log(`Attacker: ${attacker}, damage: ${damage}, player: ${playerHealth}, monster: ${monsterHealth}`)
@@ -33,5 +35,11 @@ window.onload = () => {
         document.getElementById('monster-health').style.width = monsterHealth + '%';
     }
 
+    addLog = (logMessage) => {
+        var log = document.getElementById('log');
+        var newLog = document.createElement('p');
+        newLog.innerHTML = logMessage;
+        log.appendChild(newLog);
+    }
     document.getElementById('attack').onclick = attack;
 }

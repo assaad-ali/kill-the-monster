@@ -45,6 +45,7 @@ main, .players{
 .health-bar{
     height: 100%;
     background-color: green;
+     transition: width 1s;
 }
 
 .buttons{
@@ -70,7 +71,8 @@ button {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 15vh;
+    padding: 3vh;
+    height: auto;
     width: 30vw;
     border: none;
     border-radius: 5px;
