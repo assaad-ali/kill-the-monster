@@ -25,8 +25,14 @@ window.onload = () => {
         addLog(`<span style="color: orange;">Monster</span> attacks player and deals <span style="color: red;">${damage}</span>`);
     }
 
-    // console.log(`Attacker: ${attacker}, damage: ${damage}, player: ${playerHealth}, monster: ${monsterHealth}`)
+    attackCount++;
+
+    if (attackCount >= 2 && specialAttackCount < 2) {
+        document.getElementById('special').disabled = false;
+    }
+    
     updateHealthBar();
+
     }
 
     //Updates the health bar green width
@@ -36,10 +42,26 @@ window.onload = () => {
     }
 
     addLog = (logMessage) => {
-        var log = document.getElementById('log');
-        var newLog = document.createElement('p');
+        let log = document.getElementById('log');
+        let newLog = document.createElement('p');
         newLog.innerHTML = logMessage;
         log.appendChild(newLog);
     }
     document.getElementById('attack').onclick = attack;
+
+    specialAttack = () => {
+        let damage = Math.floor(Math.random() * 21) + 25;
+        monsterHealth -= damage;
+
+        specialAttackCount++;
+
+        if (specialAttackCount >= 2) {
+            document.getElementById('special').disabled = true;
+        }
+        
+        addLog(`<span style="color: purple;">Player</span> attacks monster and deals <span style="color: red;">${damage}</span>`);
+        updateHealthBar();
+    }
+
+    document.getElementById('special').onclick = specialAttack;
 }
