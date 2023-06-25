@@ -26,14 +26,6 @@ window.onload = () => {
     }
 
     attackCount++;
-
-    if (attackCount >= 2 && specialAttackCount < 2) {
-        document.getElementById('special').disabled = false;
-    }
-
-    if (attackCount >= 4) {
-        document.getElementById('heal').disabled = false;
-    }
     
     updateHealthBar();
 
@@ -57,17 +49,22 @@ window.onload = () => {
     //until the 2-3 attack, and it can be used at most 2 times during the match.
     //and it decrease the life of the monster more than the normal attack.
     specialAttack = () => {
-        let damage = Math.floor(Math.random() * 21) + 25;
-        monsterHealth -= damage;
+        
 
-        specialAttackCount++;
+        if (attackCount >= 2 && specialAttackCount < 2) {
+            let damage = Math.floor(Math.random() * 21) + 25;
+            monsterHealth -= damage;
 
-        if (specialAttackCount >= 2) {
-            document.getElementById('special').disabled = true;
+            specialAttackCount++;
+            addLog(`<span style="color: purple;">Player</span> attacks monster and deals <span style="color: red;">${damage}</span>`);
+            updateHealthBar();
+        }
+
+        else{
+            alert("It can be used after2-3 attack, and at most 2 times during the match")
         }
         
-        addLog(`<span style="color: purple;">Player</span> attacks monster and deals <span style="color: red;">${damage}</span>`);
-        updateHealthBar();
+        
     }
 
     document.getElementById('special').onclick = specialAttack;
@@ -75,11 +72,14 @@ window.onload = () => {
     //It can be only used by the player after the 4th attack,
     //and only if the player health is less then the monster health by 30%
     heal = () => {
-        if (monsterHealth > playerHealth * 1.3) {
+        if (attackCount >= 4 && monsterHealth > playerHealth * 1.3) {
           let healing = Math.floor(Math.random() * 20) + 10; 
           playerHealth += healing;
           if (playerHealth > 100) playerHealth = 100;
           addLog(`<span style="color: purple;">Player</span> heals himself for <span style="color: green;">${healing}</span>`);
+        }
+        else {
+            alert("Your health should be less then 30%");
         }
         updateHealthBar();
     }   
