@@ -85,4 +85,23 @@ window.onload = () => {
     }   
     
     document.getElementById('heal').onclick = heal;
+
+    giveUp = () => {
+        playerHealth = 0;
+        gameOver();
+    }
+
+    gameOver = () => {
+        if(playerHealth <= 0){
+            document.getElementById('winner').innerText = 'Monster Won!'
+            document.getElementById('log').style.display = 'none';
+            document.getElementById('game-over').style.display = 'flex'
+        }
+        else if ( monsterHealth <= 0) {
+            document.getElementById('winner').innerText = 'You Won!'
+            document.getElementById('log').style.display = 'none';
+            document.getElementById('game-over').style.display = 'flex'
+        }
+    }
+    document.getElementById('giveup').onclick = giveUp;
 }

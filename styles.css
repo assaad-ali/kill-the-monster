@@ -67,11 +67,6 @@ button {
 }  
 
 .game-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 3vh;
     height: auto;
     width: 30vw;
     border: none;
@@ -79,7 +74,21 @@ button {
     box-shadow: 2px 2px 5px 1px gray;
 }
 
-#restart-button{
+.log{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3vh;
+}
+.game-over{
     display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3vh;
+}
 
+#restart-button{
+    width: 50%;
 }
