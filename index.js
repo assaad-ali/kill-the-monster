@@ -28,6 +28,7 @@ window.onload = () => {
     attackCount++;
     
     updateHealthBar();
+    gameOver();
 
     }
 
@@ -58,11 +59,13 @@ window.onload = () => {
             specialAttackCount++;
             addLog(`<span style="color: purple;">Player</span> attacks monster and deals <span style="color: red;">${damage}</span>`);
             updateHealthBar();
+            gameOver();
         }
 
         else{
             alert("It can be used after2-3 attack, and at most 2 times during the match")
         }
+
         
         
     }
@@ -104,4 +107,21 @@ window.onload = () => {
         }
     }
     document.getElementById('giveup').onclick = giveUp;
+
+    restartGame = () => {
+        playerHealth = 100;
+        monsterHealth = 100;
+        attackCount = 0;
+        specialAttackCount = 0;
+
+        document.getElementById('log').innerHTML = '<h3 >Battle Log</h3>'
+        document.getElementById('log').style.display = 'flex';
+        document.getElementById('game-over').style.display = 'none'
+
+        updateHealthBar();
+
+    }
+
+    document.getElementById('restart-button').onclick = restartGame;
+
 }
